@@ -38,9 +38,9 @@ namespace TeenHackAPI.Data
                     {
                         while (reader.Read())
                         {
-                            user.id = reader.GetInt32(0);
-                            user.password = reader.GetString(3);
-                            user.email = reader.GetString(4);
+                            user.id = reader.GetInt32(8);
+                            user.password = reader.GetString(2);
+                            user.email = reader.GetString(3);
                         }
                     }
                 }
