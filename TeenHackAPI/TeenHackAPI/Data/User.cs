@@ -23,7 +23,7 @@ namespace TeenHackAPI.Data
                 return HttpStatusCode.UnprocessableEntity;
             }
         }
-        public static int getId(string email, string password)
+        public static Models.Result getIdOrError(string email, string password)
         {
             var cs = "Host=localhost;Username=postgres;Password=mityo1234;Database=teenhack";
             using var con = new NpgsqlConnection(cs);
@@ -44,11 +44,18 @@ namespace TeenHackAPI.Data
                         }
                     }
                 }
-                return user.id;
+                if (user.password == password)
+                {
+                    return new Result { Id = user.id, StatusCode = HttpStatusCode.Accepted };
+                }
+                else
+                {
+                    return new Result { StatusCode = HttpStatusCode.Forbidden };
+                }
             }
             catch
             {
-                return 0;
+                return new Result { StatusCode = HttpStatusCode.UnprocessableEntity };
             }
         }
         public static Models.User GetUserById(int id)
