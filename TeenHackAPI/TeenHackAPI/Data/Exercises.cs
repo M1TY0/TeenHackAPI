@@ -3,7 +3,7 @@ namespace TeenHackAPI.Data
 {
     public class Get
     {
-        public static Models.Exercises[] GetExercises()
+        public static Models.Exercises[] GetExercises(Models.Purpose purpose)
         {
             var cs = "Host=localhost;Username=postgres;Password=mityo1234;Database=teenhack";
             using var con = new NpgsqlConnection(cs);
@@ -28,7 +28,10 @@ namespace TeenHackAPI.Data
                             exercise.type = ((Models.Type)Enum.Parse(typeof(Models.Type), reader.GetString(6)));
                             exercise.purpose = ((Models.Purpose)Enum.Parse(typeof(Models.Purpose ), reader.GetString(7)));
                             exercise.moreinfo = reader.GetString(8);
-                            exerciseArray[i-1] =exercise;
+                            if (exercise.purpose == purpose)
+                            {
+                                exerciseArray[i - 1] = exercise;
+                            }
                         }
                     }
                 }

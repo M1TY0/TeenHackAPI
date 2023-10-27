@@ -14,7 +14,7 @@
     }
     public enum Purpose
     {
-       stressrelieve,
+        stressrelieve,
         mindfullness,
         focus
     }

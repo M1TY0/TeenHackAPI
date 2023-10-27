@@ -8,11 +8,11 @@ namespace TeenHackAPI.Controllers
     public class Exercises : Controller
     {
         [HttpGet]
-        public Models.ExerciseResponse GetExercisesById()
+        public Models.ExerciseResponse GetExercisesByPurpose(Models.Purpose purpose)
         {
             var response = new Models.ExerciseResponse
             {
-                result = Data.Get.GetExercises()
+                result = Data.Get.GetExercises(purpose)
             };
             return response;
         }
