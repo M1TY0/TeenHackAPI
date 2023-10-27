@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace TeenHackAPI.Controllers
 {
@@ -26,6 +27,16 @@ namespace TeenHackAPI.Controllers
         public Models.User GetUserById(int id)
         {
             return Data.User.GetUserById(id);
+        }
+        [HttpPost]
+        public HttpStatusCode CreateNewUser(string firstname, string lastname, string email, string password, int weight, int height, DateTime dateofbirth, DateTime dateofregistration)
+        {
+            return Data.User.CreateUser(firstname,lastname,email,password,weight,height,dateofbirth,dateofregistration);
+        }
+        [HttpPut]
+        public Models.Result GetUserIdByEmailAndPassword (string email, string password)
+        {
+            return Data.User.getIdOrError(email,password);
         }
 }
 
