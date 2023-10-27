@@ -75,15 +75,16 @@ namespace TeenHackAPI.Data
 
                     while (reader.Read())
                     {
-                        user.id = reader.GetInt32(0);
-                        user.firstname = reader.GetString(1);
-                        user.lastname = reader.GetString(2);
-                        user.password = reader.GetString(3);
-                        user.email = reader.GetString(4);
-                        user.weight = reader.GetInt32(5);
-                        user.height = reader.GetDouble(6);
-                        user.dateofregistration = reader.GetDateTime(7);
-                        user.dateofbirth = reader.GetDateTime(8);
+                      
+                        user.firstname = reader.GetString(0);
+                        user.lastname = reader.GetString(1);
+                        user.password = reader.GetString(2);
+                        user.email = reader.GetString(3);
+                        user.weight = reader.GetInt32(4);
+                        user.height = reader.GetDouble(5);
+                        user.dateofregistration = reader.GetDateTime(6);
+                        user.dateofbirth = reader.GetDateTime(7);
+                        user.id = reader.GetInt32(8);
                     }
 
                 }
