@@ -31,6 +31,7 @@ namespace TeenHackAPI.Data
                             exercise.photoLink = reader.GetString(4);
                             exercise.partOfTheDay = (Models.PartOfTheDay)Enum.Parse(typeof(Models.PartOfTheDay), reader.GetString(5));
                             exercise.type = ((Models.Type)Enum.Parse(typeof(Models.Type), reader.GetString(6)));
+                            exercise.purpose = ((Models.Purpose)Enum.Parse(typeof(Models.Purpose ), reader.GetString(7)));
                             exerciseArray[i-1] =exercise;
                         }
 

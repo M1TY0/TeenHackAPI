@@ -4,7 +4,7 @@ namespace TeenHackAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class HomeController : Controller
+    public class Exercises : Controller
     {
         [HttpGet]
         public Models.ExerciseResponse GetExercisesById()
@@ -18,4 +18,15 @@ namespace TeenHackAPI.Controllers
 
         }
     }
+    [ApiController]
+    [Route("[controller]")]
+    public class Users : Controller
+    {
+        [HttpGet]
+        public Models.User GetUserById(int id)
+        {
+            return Data.User.GetUserById(id);
+        }
+}
+
 }

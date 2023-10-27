@@ -12,7 +12,12 @@
         breading,
         meditation
     }
-    
+    public enum Purpose
+    {
+       stressrelieve,
+        mindfullness,
+        focus
+    }
     public class Exercises
     {
         public int id { get; set; }
@@ -22,6 +27,7 @@
         public string photoLink { get; set; }
         public PartOfTheDay partOfTheDay { get; set; }
         public Type type { get; set; }
+        public  Purpose purpose { get ;set;}
     }
     public class ExerciseResponse
     {
