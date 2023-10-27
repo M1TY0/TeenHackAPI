@@ -38,9 +38,9 @@ namespace TeenHackAPI.Controllers
     public class Checking : Controller
     {
         [HttpPost]
-        public Models.Result GetUserIdByEmailAndPassword(string email, string password)
+        public int GetUserIdByEmailAndPassword(string email, string password)
         {
-            return Data.User.getIdOrError(email, password);
+            return Data.User.getId(email, password);
         }
     }
 }
