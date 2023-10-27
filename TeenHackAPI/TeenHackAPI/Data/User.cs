@@ -12,10 +12,17 @@ namespace TeenHackAPI.Data
             var cs = "Host=localhost;Username=postgres;Password=mityo1234;Database=teenhack";
             using var con = new NpgsqlConnection(cs);
             con.Open();
-            var sql = "INSERT INTO users(firstname,lastname,email,password,weight,height,dateofbirth,dateofregistration) VALUES('" + firstname + "','" + lastname + "','" + email + "','" + password + "'," + weight + "," + height + ",'" + dateofbirth + "','" + dateofregistration + "');";
-            using var cmd = new NpgsqlCommand(sql, con);
-            cmd.ExecuteScalar();
-            return HttpStatusCode.Created;
+            try
+            {
+                var sql = "INSERT INTO users(firstname,lastname,email,password,weight,height,dateofbirth,dateofregistration) VALUES('" + firstname + "','" + lastname + "','" + email + "','" + password + "'," + weight + "," + height + ",'" + dateofbirth + "','" + dateofregistration + "');";
+                using var cmd = new NpgsqlCommand(sql, con);
+                cmd.ExecuteScalar();
+                return HttpStatusCode.Created;
+            }
+            catch
+            {
+                return HttpStatusCode.UnprocessableEntity;
+            }
 
         }
         public static Models.Result getIdOrError(string email, string password)
@@ -29,7 +36,7 @@ namespace TeenHackAPI.Data
             {
                 using (var command = new NpgsqlCommand("SELECT * FROM users WHERE email = '" + email + "';", con))
                 {
-                    command.Parameters.AddWithValue("email",email );
+                    command.Parameters.AddWithValue("email", email);
                     using (var reader = command.ExecuteReader())
                     {
 
@@ -75,7 +82,7 @@ namespace TeenHackAPI.Data
 
                     while (reader.Read())
                     {
-                      
+
                         user.firstname = reader.GetString(0);
                         user.lastname = reader.GetString(1);
                         user.password = reader.GetString(2);
@@ -87,9 +94,11 @@ namespace TeenHackAPI.Data
                         user.id = reader.GetInt32(8);
                     }
 
+
                 }
+                return user;
             }
-            return user;
+
         }
     }
 }
