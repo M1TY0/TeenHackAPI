@@ -10,13 +10,11 @@ namespace TeenHackAPI.Controllers
         [HttpGet]
         public Models.ExerciseResponse GetExercisesById()
         {
-
             var response = new Models.ExerciseResponse
             {
                 result = Data.Get.GetExercises()
             };
             return response;
-
         }
     }
     [ApiController]
@@ -31,13 +29,12 @@ namespace TeenHackAPI.Controllers
         [HttpPost]
         public HttpStatusCode CreateNewUser(string firstname, string lastname, string email, string password, int weight, int height, DateTime dateofbirth, DateTime dateofregistration)
         {
-            return Data.User.CreateUser(firstname,lastname,email,password,weight,height,dateofbirth,dateofregistration);
+            return Data.User.CreateUser(firstname, lastname, email, password, weight, height, dateofbirth, dateofregistration);
         }
         [HttpPut]
-        public Models.Result GetUserIdByEmailAndPassword (string email, string password)
+        public Models.Result GetUserIdByEmailAndPassword(string email, string password)
         {
-            return Data.User.getIdOrError(email,password);
+            return Data.User.getIdOrError(email, password);
         }
-}
-
+    }
 }

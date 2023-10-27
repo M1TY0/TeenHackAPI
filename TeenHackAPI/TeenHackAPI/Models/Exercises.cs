@@ -28,6 +28,7 @@
         public PartOfTheDay partOfTheDay { get; set; }
         public Type type { get; set; }
         public  Purpose purpose { get ;set;}
+        public string moreinfo { get; set; }
     }
     public class ExerciseResponse
     {
