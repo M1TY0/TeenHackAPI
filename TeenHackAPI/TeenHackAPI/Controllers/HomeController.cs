@@ -31,7 +31,13 @@ namespace TeenHackAPI.Controllers
         {
             return Data.User.CreateUser(firstname, lastname, email, password, weight, height, dateofbirth, dateofregistration);
         }
-        [HttpPut]
+        
+    }
+    [ApiController]
+    [Route("[controller]")]
+    public class Checking : Controller
+    {
+        [HttpPost]
         public Models.Result GetUserIdByEmailAndPassword(string email, string password)
         {
             return Data.User.getIdOrError(email, password);
