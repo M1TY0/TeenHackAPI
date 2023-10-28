@@ -16,7 +16,23 @@ namespace TeenHackAPI.Controllers
             };
             return response;
         }
+        
+        
     }
+    [ApiController]
+    [Route("[controller]")]
+    public class GetMeditations : Controller
+    {
+        [HttpGet]
+        public Models.ExerciseResponseMed GetExerciseByPurpose(Models.Purpose purpose,int id)
+        {
+            var response = new Models.ExerciseResponseMed
+            {
+                result = Data.Get.GetExercisesByPurpose(purpose,id)
+            };
+            return response;
+        }
+}
     [ApiController]
     [Route("[controller]")]
     public class Users : Controller

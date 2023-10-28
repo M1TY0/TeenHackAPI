@@ -34,4 +34,8 @@
     {
         public  Models.Exercises[] result { get; set; }
     }
+    public class ExerciseResponseMed
+    {
+        public List<Models.Exercises> result { get; set; }
+    }
 }
