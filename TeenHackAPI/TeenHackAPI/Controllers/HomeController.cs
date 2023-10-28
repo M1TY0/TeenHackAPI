@@ -51,6 +51,15 @@ namespace TeenHackAPI.Controllers
     }
     [ApiController]
     [Route("[controller]")]
+    public class Comments : Controller
+    {
+        [HttpGet]
+        public List <Models.Comment> stagetCommentByPost (int idPost){
+            return Data.Comment.GetComment(idPost);
+        }
+    }
+        [ApiController]
+    [Route("[controller]")]
     public class Checking : Controller
     {
         [HttpPost]
